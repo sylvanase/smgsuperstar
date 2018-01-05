@@ -269,13 +269,14 @@
         setTimeout("musicPlay(true)", 500);
     });
 
-    $('#media').click(function (e) {
+    $('#media,#cover').click(function (e) {
         e.preventDefault();
         var videoStatus = aux.paused ? true : false;
         musicPlay(videoStatus);
     })
-
+    
     function autoPlay() {
+        $('#cover').hide();
         // 自动播放音乐效果，解决微信自动播放问题
         function musicInWeixinHandler() {
             musicPlay(true);
