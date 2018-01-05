@@ -305,11 +305,14 @@
     }
 
     function musicPlay(isPlay) {
+        alert('musicPlay');
         $('#cover').hide();
         if (isPlay && aux.paused) {
+            alert('paly');
             aux.play();
         }
         if (!isPlay && !aux.paused) {
+            alert('pause');
             aux.pause();
         }
     }
