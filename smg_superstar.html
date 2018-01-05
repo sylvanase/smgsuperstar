@@ -230,7 +230,7 @@
 </header>
 <div class="container">
     <img src="http://cache.fotoplace.cc/tv/180103/admin/C4F9FAFCD334999DB14740276A8D7700.png" alt="" id="cover">
-    <video id="media" @click="videoStatus" class="video-player" src="http://cache.fotoplace.cc/tv/180104/admin/D4038533C0212BB5AAEFFBFBB1176982.mp4
+    <video style="height: 500px;" id="media" @click="videoStatus" class="video-player" src="http://cache.fotoplace.cc/tv/180104/admin/D4038533C0212BB5AAEFFBFBB1176982.mp4
 " poster="http://cache.fotoplace.cc/tv/180103/admin/C4F9FAFCD334999DB14740276A8D7700.png"
            type="video/mp4" webkit-playsinline="true" playsinline="true" x5-video-player-type="h5"
            autoplay="autoplay"></video>
@@ -275,12 +275,6 @@
         musicPlay(videoStatus);
     })
 
-    $('#cover').click(function (e) {
-        e.preventDefault();
-        alert(1);
-        var videoStatus = aux.paused ? true : false;
-        musicPlay(videoStatus);
-    })
 
     function autoPlay() {
         alert('autoplay');
