@@ -335,6 +335,7 @@
                 if (this_.isWeixin()) {
                     alert('weixinclick');
                     document.getElementById('deepLink').setAttribute("href", this_.iphoneLink);
+                    alert(document.getElementById('deepLink').getAttribute('href'));
                     document.getElementById('deepLink').click();
                 } else { //非微信浏览器
                     if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
