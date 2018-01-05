@@ -253,6 +253,17 @@
 <script>
     var aux = document.getElementsByTagName('video')[0];
 
+    $(function(){
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        alert('是否是Android：'+isAndroid);
+        alert('是否是iOS：'+isiOS);
+        if(isAndroid){
+            $ ("#choose").attr('capture','camera');
+        }
+    });
+
     autoPlay(); //自动播放
     aux.addEventListener("ended", function () { // 监听视频是否播放完毕
         setTimeout(function () {
@@ -277,7 +288,6 @@
 
 
     function autoPlay() {
-        alert('autoplay');
         // 自动播放音乐效果，解决微信自动播放问题
         function musicInWeixinHandler() {
             musicPlay(true);
@@ -299,14 +309,11 @@
     }
 
     function musicPlay(isPlay) {
-        alert('musicPlay');
         $('#cover').hide();
         if (isPlay && aux.paused) {
-            alert('paly');
             aux.play();
         }
         if (!isPlay && !aux.paused) {
-            alert('pause');
             aux.pause();
         }
     }
