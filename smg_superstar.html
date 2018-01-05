@@ -259,12 +259,10 @@
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         alert('是否是Android：'+isAndroid);
         alert('是否是iOS：'+isiOS);
-        if(isAndroid){
-            $ ("#choose").attr('capture','camera');
+        if(isiOS){
+            autoPlay(); //自动播放
         }
     });
-
-    autoPlay(); //自动播放
     aux.addEventListener("ended", function () { // 监听视频是否播放完毕
         setTimeout(function () {
             $('.pop').show();
