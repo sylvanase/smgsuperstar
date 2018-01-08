@@ -264,9 +264,11 @@
 </header>
 <div class="container">
     <img src="http://cache.fotoplace.cc/tv/180103/admin/C4F9FAFCD334999DB14740276A8D7700.png" alt="" id="cover">
-    <video id="media" @click="videoStatus" class="video-player" src="http://cache.fotoplace.cc/tv/180104/admin/D4038533C0212BB5AAEFFBFBB1176982.mp4"
+    <video id="media" @click="videoStatus" class="video-player"
+           src="http://cache.fotoplace.cc/tv/180104/admin/D4038533C0212BB5AAEFFBFBB1176982.mp4"
            type="video/mp4" webkit-playsinline="true" playsinline="true" x5-video-player-type="h5"
-           autoplay="autoplay" x5-video-player-fullscreen="true" poster="http://cache.fotoplace.cc/tv/180103/admin/C4F9FAFCD334999DB14740276A8D7700.png"></video>
+           autoplay="autoplay" x5-video-player-fullscreen="true"
+           poster="http://cache.fotoplace.cc/tv/180103/admin/C4F9FAFCD334999DB14740276A8D7700.png"></video>
 </div>
 <div class="pop animated" style="display: none;">
     <div class="bg"></div>
@@ -284,7 +286,7 @@
 </div>
 <script src="jquery.js"></script>
 <script>
-    autoPlay();
+    //    autoPlay();
     var aux = document.getElementById("media");
 
     aux.addEventListener('play', function () { // 监听视频播放状态
@@ -298,6 +300,17 @@
             $('.pop').addClass('fadeInUp');
         }, 500);
     });
+
+    $(window).one('touchstart', function () {
+        var videoStatus = aux.paused ? true : false;
+        musicPlay(videoStatus);
+    });
+
+    document.addEventListener("WeixinJSBridgeReady", function () {
+        var videoStatus = aux.paused ? true : false;
+        alert('videoStatus');
+        musicPlay(videoStatus);
+    }, false);
 
     $('.replay').click(function (e) { // 重新播放视频
         e.preventDefault();
@@ -338,7 +351,6 @@
 
         document.body.addEventListener('touchstart', musicInBrowserHandler);
     }
-
 
 
     function musicPlay(isPlay) {
