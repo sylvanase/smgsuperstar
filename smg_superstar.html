@@ -338,8 +338,8 @@
     }
 
     function musicPlay(isPlay) {
-        $('#cover').hide();
         if (isPlay && aux.paused) {
+            $('#cover').hide();
             aux.play();
         }
         if (!isPlay && !aux.paused) {
