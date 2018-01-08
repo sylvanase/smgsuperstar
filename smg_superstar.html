@@ -286,7 +286,6 @@
 </div>
 <script src="jquery.js"></script>
 <script>
-    //    autoPlay();
     var aux = document.getElementById("media");
 
     aux.addEventListener('play', function () { // 监听视频播放状态
@@ -311,8 +310,6 @@
         var u = navigator.userAgent, app = navigator.appVersion;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        alert('isiOS1:'+isiOS);
-        alert('isAndroid1:'+isAndroid);
         if (isiOS) { //ios自动播放
             musicPlay(videoStatus);
         }
@@ -330,33 +327,6 @@
         var videoStatus = aux.paused ? true : false;
         musicPlay(videoStatus);
     });
-
-
-    function autoPlay() {
-        var u = navigator.userAgent, app = navigator.appVersion;
-        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
-        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        if (isiOS) {
-            // 自动播放音乐效果，解决微信自动播放问题
-            function musicInWeixinHandler() {
-                musicPlay(true);
-                document.addEventListener("WeixinJSBridgeReady", function () {
-                    musicPlay(true);
-                }, false);
-                document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
-            }
-
-            document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
-        }
-
-        // 自动播放音乐效果，解决浏览器或者APP自动播放问题
-        function musicInBrowserHandler() {
-            musicPlay(true);
-            document.body.removeEventListener('touchstart', musicInBrowserHandler);
-        }
-
-        document.body.addEventListener('touchstart', musicInBrowserHandler);
-    }
 
 
     function musicPlay(isPlay) {
