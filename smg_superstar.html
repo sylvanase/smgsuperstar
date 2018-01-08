@@ -283,43 +283,20 @@
 </div>
 <script src="jquery.js"></script>
 <script>
-    /*$(function () {
+    $(function () {
         var u = navigator.userAgent, app = navigator.appVersion;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         if (isiOS) {
-            alert('ios1');
-            autoPlay(); // ios下自动播放
+
         }
-    });*/
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            musicPlay(true);
+        }, false);
+        document.getElementById('media').addEventListener('touchstart', musicInBrowserHandler);
+    });
 
-
-
-    window.onload=function(){
-        var aux = document.getElementById("media");
-        aux.addEventListener('play', function () { // 监听视频播放状态
-            $('#cover').hide();
-        });
-
-        aux.addEventListener("ended", function () { // 监听视频是否播放完毕
-            setTimeout(function () {
-                $('.pop').show();
-                $('.pop').removeClass('fadeOutDown');
-                $('.pop').addClass('fadeInUp');
-            }, 500);
-        });
-        var u = navigator.userAgent, app = navigator.appVersion;
-        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
-        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        if (isiOS) {
-            alert('ios1');
-            autoPlay(); // ios下自动播放
-        }
-    }
-
-
-
-    /*var aux = document.getElementById("media");
+    var aux = document.getElementById("media");
 
     aux.addEventListener('play', function () { // 监听视频播放状态
         $('#cover').hide();
@@ -331,7 +308,7 @@
             $('.pop').removeClass('fadeOutDown');
             $('.pop').addClass('fadeInUp');
         }, 500);
-    });*/
+    });
 
     $('.replay').click(function (e) { // 重新播放视频
         e.preventDefault();
@@ -345,6 +322,11 @@
         var videoStatus = aux.paused ? true : false;
         musicPlay(videoStatus);
     });
+
+    function musicInBrowserHandler() {
+        musicPlay(true);
+        document.getElementById('media').removeEventListener('touchstart', musicInBrowserHandler);
+    }
 
     function autoPlay() {
         // 自动播放音乐效果，解决微信自动播放问题
@@ -369,7 +351,6 @@
     }
 
     function musicPlay(isPlay) {
-        var aux = document.getElementById("media");
         if (isPlay && aux.paused) {
             aux.play();
         }
