@@ -292,13 +292,6 @@
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         if (isiOS) {
             autoPlay();
-        } else if (isAndroid) {
-            function musicInBrowserHandler() {
-                musicPlay(true);
-                document.getElementById('media').removeEventListener('touchstart', musicInBrowserHandler);
-            }
-
-            document.getElementById('media').addEventListener('touchstart', musicInBrowserHandler);
         }
     });
 
