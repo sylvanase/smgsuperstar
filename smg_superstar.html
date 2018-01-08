@@ -289,7 +289,8 @@
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         alert(1);
         if (isiOS) {
-            autoPlay();
+            audioAutoPlay('media');
+            //autoPlay();
         }
     });
 
@@ -320,10 +321,25 @@
         musicPlay(videoStatus);
     });
 
-    function musicInBrowserHandler() {
-        musicPlay(true);
-        document.getElementById('media').removeEventListener('touchstart', musicInBrowserHandler);
+
+    function audioAutoPlay(id){
+        var audio = document.getElementById(id),
+            play = function(){
+                audio.play();
+                document.removeEventListener("touchstart",play, false);
+            };
+        audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            play();
+        }, false);
+        document.addEventListener('YixinJSBridgeReady', function() {
+            play();
+        }, false);
+        document.addEventListener("touchstart",play, false);
     }
+
+
+
 
     function autoPlay() {
         // 自动播放音乐效果，解决微信自动播放问题
