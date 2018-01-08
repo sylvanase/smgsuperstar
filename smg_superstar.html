@@ -287,13 +287,10 @@
         var u = navigator.userAgent, app = navigator.appVersion;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        alert(1);
         if (isiOS) {
-
+            autoPlay();
         }
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            musicPlay(true);
-        }, false);
-        document.getElementById('media').addEventListener('touchstart', musicInBrowserHandler);
     });
 
     var aux = document.getElementById("media");
@@ -352,6 +349,7 @@
 
     function musicPlay(isPlay) {
         if (isPlay && aux.paused) {
+            $('#cover').hide();
             aux.play();
         }
         if (!isPlay && !aux.paused) {
