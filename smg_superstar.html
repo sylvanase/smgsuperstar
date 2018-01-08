@@ -308,8 +308,14 @@
 
     document.addEventListener("WeixinJSBridgeReady", function () {
         var videoStatus = aux.paused ? true : false;
-        alert('videoStatus');
-        musicPlay(videoStatus);
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        alert('isiOS:'+isiOS);
+        alert('isAndroid:'+isAndroid);
+        if (isiOS) { //ios自动播放
+            musicPlay(videoStatus);
+        }
     }, false);
 
     $('.replay').click(function (e) { // 重新播放视频
