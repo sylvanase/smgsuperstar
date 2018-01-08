@@ -293,9 +293,17 @@
         }
     });
 
-    aux.addEventListener('play',function(){
+    var eventTester = function(e){
+        aux.addEventListener(e,function(){
+            alert('play');
+        },false);
+    }
+
+    eventTester("play");
+
+    /*aux.addEventListener('play',function(){
         $('#cover').hide();
-    });
+    });*/
 
     aux.addEventListener("ended", function () { // 监听视频是否播放完毕
         setTimeout(function () {
