@@ -58,6 +58,7 @@
             width: 100%;
             height: 0.56rem;
             top: 0;
+            padding-left: 0.01rem;
         }
 
         #header .logo .smg-logo {
@@ -287,10 +288,8 @@
         var u = navigator.userAgent, app = navigator.appVersion;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        alert(1);
         if (isiOS) {
-            audioAutoPlay('media');
-            //autoPlay();
+            autoPlay();
         }
     });
 
@@ -322,29 +321,9 @@
     });
 
 
-    function audioAutoPlay(id){
-        var audio = document.getElementById(id),
-            play = function(){
-                audio.play();
-                document.removeEventListener("touchstart",play, false);
-            };
-        audio.play();
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            play();
-        }, false);
-        document.addEventListener('YixinJSBridgeReady', function() {
-            play();
-        }, false);
-        document.addEventListener("touchstart",play, false);
-    }
-
-
-
-
     function autoPlay() {
         // 自动播放音乐效果，解决微信自动播放问题
         function musicInWeixinHandler() {
-            $('#cover').hide();
             musicPlay(true);
             document.addEventListener("WeixinJSBridgeReady", function () {
                 musicPlay(true);
