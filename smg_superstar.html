@@ -289,9 +289,12 @@
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         if (isiOS) {
-            $('#cover').hide();
             autoPlay(); // ios下自动播放
         }
+    });
+
+    aux.addEventListener('play',function(){
+        $('#cover').hide();
     });
 
     aux.addEventListener("ended", function () { // 监听视频是否播放完毕
@@ -330,7 +333,6 @@
 
         // 自动播放音乐效果，解决浏览器或者APP自动播放问题
         function musicInBrowserHandler() {
-            $('#cover').hide();
             musicPlay(true);
             document.getElementById('media').removeEventListener('touchstart', musicInBrowserHandler);
         }
