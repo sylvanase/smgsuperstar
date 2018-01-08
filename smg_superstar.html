@@ -285,28 +285,20 @@
 <script>
     var aux = document.getElementsByTagName('video')[0];
     $(function () {
-        var aux = document.getElementsByTagName('video')[0];
+        /*var aux = document.getElementsByTagName('video')[0];
         aux.addEventListener('play',function(){
             alert('play1');
             $('#cover').hide();
-        },false);
+        },false);*/
+        $('#cover').hide();
         var u = navigator.userAgent, app = navigator.appVersion;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         if (isiOS) {
+            alert('ios');
             autoPlay(); // ios下自动播放
         }
     });
-
-    aux.addEventListener('play',function(){
-        alert('play1');
-        $('#cover').hide();
-    },false);
-
-
-    /*aux.addEventListener('play',function(){
-        $('#cover').hide();
-    });*/
 
     aux.addEventListener("ended", function () { // 监听视频是否播放完毕
         setTimeout(function () {
