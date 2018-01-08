@@ -264,9 +264,11 @@
 </header>
 <div class="container">
     <img src="http://cache.fotoplace.cc/tv/180103/admin/C4F9FAFCD334999DB14740276A8D7700.png" alt="" id="cover">
-    <video id="media" @click="videoStatus" class="video-player" src="http://cache.fotoplace.cc/tv/180104/admin/D4038533C0212BB5AAEFFBFBB1176982.mp4"
+    <video id="media" @click="videoStatus" class="video-player"
+           src="http://cache.fotoplace.cc/tv/180104/admin/D4038533C0212BB5AAEFFBFBB1176982.mp4"
            type="video/mp4" webkit-playsinline="true" playsinline="true" x5-video-player-type="h5"
-           autoplay="autoplay" x5-video-player-fullscreen="true" poster="http://cache.fotoplace.cc/tv/180103/admin/C4F9FAFCD334999DB14740276A8D7700.png"></video>
+           autoplay="autoplay" x5-video-player-fullscreen="true"
+           poster="http://cache.fotoplace.cc/tv/180103/admin/C4F9FAFCD334999DB14740276A8D7700.png"></video>
 </div>
 <div class="pop animated" style="display: none;">
     <div class="bg"></div>
@@ -290,6 +292,13 @@
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         if (isiOS) {
             autoPlay();
+        } else if (isAndroid) {
+            function musicInBrowserHandler() {
+                musicPlay(true);
+                document.getElementById('media').removeEventListener('touchstart', musicInBrowserHandler);
+            }
+
+            document.getElementById('media').addEventListener('touchstart', musicInBrowserHandler);
         }
     });
 
