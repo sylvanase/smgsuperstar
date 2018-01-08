@@ -58,7 +58,6 @@
             width: 100%;
             height: 0.56rem;
             top: 0;
-            padding: 0 0 0 0.125rem;
         }
 
         #header .logo .smg-logo {
@@ -67,9 +66,8 @@
 
         #header .logo .more {
             height: 0.37rem;
-            margin-left: 0.1rem;
             position: absolute;
-            right: 0.125rem;
+            right: 0.05rem;
             top: 0.12rem;
         }
 
@@ -216,6 +214,41 @@
             animation-name: fadeOutDown;
         }
 
+        .tadaAnimated {
+            animation-duration: 1.5s;
+            animation-fill-mode: both;
+        }
+
+        .tadaAnimated.infinite {
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes tada {
+            from {
+                transform: scale3d(1, 1, 1);
+            }
+
+            10%, 20% {
+                transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+            }
+
+            30%, 50%, 70%, 90% {
+                transform: scale3d(1.0, 1.0, 1.0) rotate3d(0, 0, 1, 3deg);
+            }
+
+            40%, 60%, 80% {
+                transform: scale3d(1.0, 1.0, 1.0) rotate3d(0, 0, 1, -3deg);
+            }
+
+            to {
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        .tada {
+            animation-name: tada;
+        }
+
     </style>
 </head>
 <body onselectstart="return false">
@@ -224,7 +257,7 @@
     <div class="logo">
         <img class="smg-logo" src="header-logo.png" alt="logo">
         <a onclick="openApp()" href="javascript:void(0);">
-            <img class="more" src="more.png" alt="more">
+            <img class="more tadaAnimated infinite tada" src="more.png" alt="more">
         </a>
     </div>
 </header>
