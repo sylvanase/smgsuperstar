@@ -301,8 +301,7 @@
     });
 
     $(window).one('touchstart', function () {
-        var videoStatus = aux.paused ? true : false;
-        musicPlay(videoStatus);
+        musicPlay(true);
     });
 
     document.addEventListener("WeixinJSBridgeReady", function () {
