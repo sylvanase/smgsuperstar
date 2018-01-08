@@ -284,7 +284,6 @@
 <script src="jquery.js"></script>
 <script>
     var aux = document.getElementsByTagName('video')[0];
-    var phoneSys;
     $(function () {
         var u = navigator.userAgent, app = navigator.appVersion;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
@@ -331,6 +330,7 @@
 
         // 自动播放音乐效果，解决浏览器或者APP自动播放问题
         function musicInBrowserHandler() {
+            $('#cover').hide();
             musicPlay(true);
             document.getElementById('media').removeEventListener('touchstart', musicInBrowserHandler);
         }
