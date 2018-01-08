@@ -322,8 +322,8 @@
 
 
     function autoPlay() {
+        alert('play');
         // 自动播放音乐效果，解决微信自动播放问题
-        alert(1);
         function musicInWeixinHandler() {
             musicPlay(true);
             document.addEventListener("WeixinJSBridgeReady", function () {
@@ -334,14 +334,18 @@
 
         document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
 
+        var u = navigator.userAgent;
+
         // 自动播放音乐效果，解决浏览器或者APP自动播放问题
         function musicInBrowserHandler() {
             musicPlay(true);
-            document.getElementById('media').removeEventListener('touchstart', musicInBrowserHandler);
+            document.body.removeEventListener('touchstart', musicInBrowserHandler);
         }
 
-        document.getElementById('media').addEventListener('touchstart', musicInBrowserHandler);
+        document.body.addEventListener('touchstart', musicInBrowserHandler);
     }
+
+
 
     function musicPlay(isPlay) {
         if (isPlay && aux.paused) {
