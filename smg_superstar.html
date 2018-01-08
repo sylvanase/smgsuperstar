@@ -283,28 +283,21 @@
 </div>
 <script src="jquery.js"></script>
 <script>
-    var aux = document.getElementById("media");
-
-    aux.onplay = function() {
-        alert('onplay3');
-        $('#cover').hide();
-    };
-
-    /*aux.addEventListener('play',function(){ // 监听视频播放状态
-        alert('play2');
-        $('#cover').hide();
-    });*/
     $(function () {
-        /*var u = navigator.userAgent, app = navigator.appVersion;
+        var u = navigator.userAgent, app = navigator.appVersion;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
         if (isiOS) {
             alert('ios1');
             autoPlay(); // ios下自动播放
-        }*/
+        }
     });
 
-    //phoneSys();
+    var aux = document.getElementById("media");
+
+    aux.addEventListener('play', function () { // 监听视频播放状态
+        $('#cover').hide();
+    });
 
     aux.addEventListener("ended", function () { // 监听视频是否播放完毕
         setTimeout(function () {
@@ -327,20 +320,10 @@
         musicPlay(videoStatus);
     })
 
-    function phoneSys(){ // 判断手机系统类型
-        var u = navigator.userAgent, app = navigator.appVersion;
-        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
-        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        if (isiOS) {
-            alert('ios3');
-            autoPlay(); // ios下自动播放
-        }
-    }
-
-
     function autoPlay() {
         // 自动播放音乐效果，解决微信自动播放问题
         function musicInWeixinHandler() {
+            $('#cover').hide();
             musicPlay(true);
             document.addEventListener("WeixinJSBridgeReady", function () {
                 musicPlay(true);
