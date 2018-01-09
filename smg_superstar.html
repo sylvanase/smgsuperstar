@@ -302,13 +302,6 @@
         }, 500);
     });
 
-    function musicInBrowserHandler() {
-        musicPlay(true);
-        document.getElementById('media').removeEventListener('touchstart', musicInBrowserHandler);
-    }
-
-    document.body.addEventListener('touchstart', musicInBrowserHandler);
-
     /*$(window).one('touchstart', function () {
         musicPlay(true);
     });*/
@@ -330,7 +323,7 @@
         setTimeout("musicPlay(true)", 500);
     });
 
-    $('#media').click(function (e) { // 点击暂停播放视频
+    $('#media,#cover').click(function (e) { // 点击暂停播放视频
         e.preventDefault();
         var videoStatus = aux.paused ? true : false;
         musicPlay(videoStatus);
