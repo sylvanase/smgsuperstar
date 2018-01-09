@@ -263,7 +263,8 @@
     </div>
 </header>
 <div class="container">
-    <img src="http://cache.fotoplace.cc/tv/180103/admin/C4F9FAFCD334999DB14740276A8D7700.png" alt="" id="cover">
+    <!--<img src="http://cache.fotoplace.cc/tv/180103/admin/C4F9FAFCD334999DB14740276A8D7700.png" alt="" id="cover">-->
+    <img src="cover.jpg" alt="封面" id="cover">
     <video id="media" @click="videoStatus" class="video-player"
            src="http://cache.fotoplace.cc/tv/180104/admin/D4038533C0212BB5AAEFFBFBB1176982.mp4"
            type="video/mp4" webkit-playsinline="true" playsinline="true" x5-video-player-type="h5"
@@ -284,6 +285,7 @@
         <img class="replay" src="replay.png" alt="">
     </div>
 </div>
+<a id="deepLink" href="https://apple.paomiantv.cn/m/apple/user/153458467459907584" style="display: none;"></a>
 <script src="jquery.js"></script>
 <script>
     var aux = document.getElementById("media");
@@ -349,11 +351,11 @@
             iphoneLink: 'https://apple.paomiantv.cn/m/apple/' + type + '/' + _id,
             openApp: function () {
                 var this_ = this;
-                var aDom = document.createElement('a');
+                /*var aDom = document.createElement('a');
                 aDom.style.display = 'none';
                 aDom.setAttribute("id", "deepLink");
                 var parent = document.body;
-                parent.appendChild(aDom);
+                parent.appendChild(aDom);*/
                 //微信
                 if (this_.isWeixin()) {
                     var u = navigator.userAgent, app = navigator.appVersion;
@@ -361,9 +363,11 @@
                     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
                     if (isiOS) {
 //                        alert(this_.iphoneLink);
-                        document.getElementById('deepLink').setAttribute("href", this_.iphoneLink);
+//                        document.getElementById('deepLink').setAttribute("href", this_.iphoneLink);
+                        alert('deeplink')
                         document.getElementById('deepLink').click();
                     } else {
+                        alert('paomiantv')
                         window.location.href = this_.iphoneDownUrl;
                     }
 
