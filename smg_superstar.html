@@ -330,7 +330,7 @@
         setTimeout("musicPlay(true)", 500);
     });
 
-    $('#media,#cover').click(function (e) { // 点击暂停播放视频
+    $('#media').click(function (e) { // 点击暂停播放视频
         e.preventDefault();
         var videoStatus = aux.paused ? true : false;
         musicPlay(videoStatus);
